@@ -59,7 +59,21 @@ function getInfoPenjualan(dataPenjualan) {
   };
 
   const penulisTerlaris = (dataPenjualan) => {
-    const sortPenulisTerlaris = dataPenjualan.sort(
+    const newDataPenjualanNovel = dataPenjualan.reduce((prev, curr) => {
+      const index = prev.findIndex((search) => {
+        return search.penulis === curr.penulis;
+      });
+
+      if (index !== -1) {
+        const data = [...prev];
+        data[index].totalTerjual += curr.totalTerjual;
+        return [...data];
+      }
+
+      return [...prev, curr];
+    }, []);
+
+    const sortPenulisTerlaris = newDataPenjualanNovel.sort(
       (a, b) => a.totalTerjual - b.totalTerjual
     );
     const penulis = sortPenulisTerlaris[sortPenulisTerlaris.length - 1].penulis;
