@@ -32,7 +32,7 @@ const dataPenjualanNovel = [
     penulis: "Andrea Hirata",
     hargaBeli: 55000,
     hargaJual: 68000,
-    totalTerjual: 28,
+    totalTerjual: 20,
     sisaStok: 56,
   },
 ];
